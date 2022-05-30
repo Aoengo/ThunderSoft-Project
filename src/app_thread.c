@@ -5,11 +5,17 @@
 
 
 static void* thread1(){
+    while(1){
     printf("The first one!\n");
+    sleep(1);
+    }
 }
 
 static void* thread2(){
-    printf("The second one\n");
+    while(1){
+        sleep(1);
+        printf("The second one\n");
+    }
 }
 
 

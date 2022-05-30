@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include <pthread.h>
+#include <sys/time.h>
 
 int user_thread_init(void);
 
