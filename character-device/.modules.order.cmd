@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Documents/ThunderSoft-Project/character-device/modules.order := {   echo /home/gabriel/Documents/ThunderSoft-Project/character-device/demo_control.ko; :; } | awk '!x[$$0]++' - > /home/gabriel/Documents/ThunderSoft-Project/character-device/modules.order
