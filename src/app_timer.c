@@ -3,6 +3,7 @@
 
 
 void timer_handler(){
+    num_value.ready_flag = 3;
     printf("Hello\n");
 }
 

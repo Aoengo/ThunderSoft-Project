@@ -14,7 +14,7 @@
 
 #define BUF_SIZE        256
 
-#define DEMO_MAJOR      240
+#define DEMO_MAJOR      236
 #define DEMO_MINOR      0
 
 #define COMMAND_A 'a'
@@ -101,13 +101,13 @@ static long demo_ioctl(struct file *filp,unsigned int cmd,unsigned long arg){
     printk(KERN_ERR "DEMO: Line %d,function %s() has been invoked!\n",__LINE__,__func__);
     switch(cmd){
         case COMMAND_A:
-            printk("DEMO:Line %d,ioctl successfully(COMMAND_A)!\n",__LINE__);
+            printk("DEMO: Line %d,ioctl successfully(COMMAND_A)!\n",__LINE__);
             break;
         case COMMAND_B:
-            printk("DEMO:Line %d,ioctl successfully(COMMAND_B)!\n",__LINE__);
+            printk("DEMO: Line %d,ioctl successfully(COMMAND_B)!\n",__LINE__);
             break;
         default:
-            printk("DEMO:Line %d,ioctl error(invalid command)!\n",__LINE__);
+            printk("DEMO: Line %d,ioctl error(invalid command)!\n",__LINE__);
             return -EINVAL;
     }
     return 0;
