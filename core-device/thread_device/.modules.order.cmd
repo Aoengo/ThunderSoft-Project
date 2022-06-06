@@ -1,0 +1,1 @@
+cmd_/home/gabriel/Documents/ThunderSoft-Project/core-device/thread_device/modules.order := {  :; } | awk '!x[$$0]++' - > /home/gabriel/Documents/ThunderSoft-Project/core-device/thread_device/modules.order
