@@ -1,16 +1,25 @@
-TARGET := core_thread
-BUILD := ./build
+TARGET 		:= core
+BUILD 		:= ./build
+
+#BUILD_DIR	:= ./build
+SRC_DIR		:= ./src
+#OBJ_DIR		:= $(BUILD_DIR)/obj
+
+SRCS		:= $(wildcard $(SRC_DIR)/*.c)
+#OBJS 		:= $(patsubst $(SRC_DIR)/%.c, $(SRC_DIR)/%.o, $(SRCS))
+OBJS 		:= $(patsubst %.c, %.o, $(SRCS))
+
 ifneq ($(KERNELRELEASE),)
 	obj-m:= $(TARGET).o
-	$(TARGET)-objs += ./src/core_thread.o
+	$(TARGET)-objs += ./src/core_main.o ./src/core_thread.o
 else
 	KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 
 default:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) O=$(PWD)/build modules
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
 
-.clean:
+clean:
 	@rm -rf *~ *.o *.ko *.mod.c *.mod .*.cmd modules.order Module.makers Module.symvers .tmp_versions
 
 endif

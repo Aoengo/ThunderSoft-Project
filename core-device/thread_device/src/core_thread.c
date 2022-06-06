@@ -1,11 +1,4 @@
-#include <linux/module.h>
-#include <linux/moduleparam.h>
-#include <linux/init.h>
-#include <linux/kmod.h>
-#include <linux/sched.h>
-#include <linux/delay.h>
-#include <linux/kthread.h>
-
+#include "core_thread.h"
 
 
 #define CLONE_KERNEL    (CLONE_FS | CLONE_FILES | CLONE_SIGHAND)
@@ -38,7 +31,7 @@ int kernel_count2(void *arg){
     return 0;
 }
 
-static int __init count_thread_init(void)
+int count_thread_init(void)
 {
     printk("%s:\n",__func__);
     task1_handle = kthread_create(kernel_count1,NULL,"count1 task");  
@@ -53,15 +46,9 @@ static int __init count_thread_init(void)
     return 0;
 }
 
-static void __exit count_thread_exit(void)
+void count_thread_exit(void)
 {
         printk("%s:\n",__func__);
         kthread_stop(task1_handle);
         kthread_stop(task2_handle);
 }
-
-MODULE_AUTHOR("Gabriel");
-MODULE_LICENSE("GPL");
-
-module_init(count_thread_init);
-module_exit(count_thread_exit);
