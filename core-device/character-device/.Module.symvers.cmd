@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Documents/ThunderSoft-Project/character-device/Module.symvers := sed 's/ko$$/o/' /home/gabriel/Documents/ThunderSoft-Project/character-device/modules.order | scripts/mod/modpost -m -a   -o /home/gabriel/Documents/ThunderSoft-Project/character-device/Module.symvers -e -i Module.symvers   -T -

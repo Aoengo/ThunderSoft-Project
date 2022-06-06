@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Documents/ThunderSoft-Project/character-device/demo_control.mod := { echo  /home/gabriel/Documents/ThunderSoft-Project/character-device/demo_control.o;  echo; } > /home/gabriel/Documents/ThunderSoft-Project/character-device/demo_control.mod

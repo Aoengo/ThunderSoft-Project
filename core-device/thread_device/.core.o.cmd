@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/core.o := ld -m elf_x86_64    -r -o /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/core.o /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_main.o /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_thread.o
