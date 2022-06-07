@@ -1,20 +1,10 @@
-TARGET 		:= core
-BUILD 		:= ./build
-
-#BUILD_DIR	:= ./build
-SRC_DIR		:= ./src
-#OBJ_DIR		:= $(BUILD_DIR)/obj
-
-SRCS		:= $(wildcard $(SRC_DIR)/*.c)
-#OBJS 		:= $(patsubst $(SRC_DIR)/%.c, $(SRC_DIR)/%.o, $(SRCS))
-OBJS 		:= $(patsubst %.c, %.o, $(SRCS))
-
+TARGET		:= ThunderSoft_Project
 ifneq ($(KERNELRELEASE),)
 	obj-m:= $(TARGET).o
-	$(TARGET)-objs += ./src/core_main.o ./src/core_thread.o
+	$(TARGET)-objs += ./src/core_thread.o ./src/core_timer.o ./src/core_main.o 
 else
 	KERNELDIR ?= /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+	PWD := $(shell pwd)
 
 default:
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
