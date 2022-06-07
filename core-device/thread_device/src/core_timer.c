@@ -1,18 +1,14 @@
 #include "core_timer.h"
 
-volatile num_value_t num_value;
+volatile unsigned short timer_flag1 = 1;
+volatile unsigned short timer_flag2 = 1;
 
 static struct timer_list timer;
 
 void timer_callback(struct timer_list *t){
-    static int count = 0;
-    num_value.ready1 = 1;
-    if(count > 0){
-        num_value.ready2 = 1;
-        count = 0;
-    }else{
-        count ++;
-    }
+    printk("Timer running");
+    timer_flag1 = 0;
+    timer_flag2 = 0;
     mod_timer(&timer,jiffies + msecs_to_jiffies(1000));
 }
 

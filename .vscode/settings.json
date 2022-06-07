@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "app_thread.h": "c"
+        "app_thread.h": "c",
+        "core_timer.h": "c",
+        "config.h": "c"
     }
 }
