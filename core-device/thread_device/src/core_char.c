@@ -5,23 +5,50 @@
 #define DEMO_MAJOR      236
 #define DEMO_MINOR      0
 
-#define COMMAND_A 'a'
-#define COMMAND_B 'b'
+#define COMMAND_A '1'
+#define COMMAND_B '2'
+#define COMMAND_C '3'
+#define COMMAND_D '4'
 
+#define COMMAND_E '5'
+#define COMMAND_F '6'
+#define COMMAND_G '7'
+#define COMMAND_H '8'
 
 static long demo_ioctl(struct file *filp,unsigned int cmd,unsigned long arg){
-    printk(KERN_ERR "DEMO: Line %d,function %s() has been invoked!\n",__LINE__,__func__);
+    // printk(KERN_ERR "DEMO: Line %d,function %s() has been invoked!\n",__LINE__,__func__);
     switch(cmd){
         case COMMAND_A:
-            printk("DEMO: Line %d,ioctl successfully(COMMAND_A)!\n",__LINE__);
+            digitalSet(&dev.work_state,((dev.work_state & 0xf0) | FIRST_BEGIN));
             break;
         case COMMAND_B:
-            printk("DEMO: Line %d,ioctl successfully(COMMAND_B)!\n",__LINE__);
+            digitalSet(&dev.work_state,((dev.work_state & 0xf0) | FIRST_CONTINUE));           
+            break;
+        case COMMAND_C:
+            digitalSet(&dev.work_state,((dev.work_state & 0xf0) | FIRST_SUSPEND));           
+            break;
+        case COMMAND_D:
+            digitalSet(&dev.work_state,((dev.work_state & 0xf0) | FIRST_STOP));           
+            break;
+
+
+        case COMMAND_E:
+            digitalSet(&dev.work_state,((dev.work_state & 0x0f) | SECOND_BEGIN));
+            break;
+        case COMMAND_F:
+            digitalSet(&dev.work_state,((dev.work_state & 0x0f) | SECOND_CONTINUE));
+            break;
+        case COMMAND_G:
+            digitalSet(&dev.work_state,((dev.work_state & 0x0f) | SECOND_SUSPEND));
+            break;
+        case COMMAND_H:
+            digitalSet(&dev.work_state,((dev.work_state & 0x0f) | SECOND_STOP));
             break;
         default:
             printk("DEMO: Line %d,ioctl error(invalid command)!\n",__LINE__);
             return -EINVAL;
     }
+    printk("Press Value:%x\n",dev.work_state);
     return 0;
 }
 

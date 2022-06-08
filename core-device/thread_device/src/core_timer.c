@@ -6,8 +6,9 @@ static struct timer_list timer;
 
 void timer_callback(struct timer_list *t){
     // printk("Timer running");
-    up(&dev.timer_sema1);
-    up(&dev.timer_sema2);
+    // up(&dev.timer_sema1);
+    // up(&dev.timer_sema2);
+    up(&dev.control_sema);
     mod_timer(&timer,jiffies + msecs_to_jiffies(1000));
 }
 

@@ -16,7 +16,10 @@ static int __init user_module_init(void){
 }
 static void __exit user_module_exit(void){
     up(&dev.timer_sema1);
-    up(&dev.timer_sema2); 
+    up(&dev.timer_sema2);
+    up(&dev.timer_sema1);
+    up(&dev.timer_sema2);
+    up(&dev.control_sema); 
     dev.thread_state = 0;
     count_timer_exit();
     count_thread_exit();
