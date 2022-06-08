@@ -6,9 +6,8 @@ volatile unsigned short timer_flag2 = 1;
 static struct timer_list timer;
 
 void timer_callback(struct timer_list *t){
-    printk("Timer running");
-    timer_flag1 = 0;
-    timer_flag2 = 0;
+    // printk("Timer running");
+    up(&dev.timer_sema);
     mod_timer(&timer,jiffies + msecs_to_jiffies(1000));
 }
 

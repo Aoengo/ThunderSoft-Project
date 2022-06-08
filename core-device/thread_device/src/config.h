@@ -9,9 +9,18 @@
 #include <linux/delay.h>
 #include <linux/kthread.h>
 #include <linux/time.h>
+#include <linux/semaphore.h>
 
 
-extern volatile unsigned short timer_flag1;
-extern volatile unsigned short timer_flag2;
 
+
+typedef struct {
+    struct semaphore thread_sema;
+    struct semaphore timer_sema;
+    int num1;
+    int num2;
+    int thread_state;
+}core_dev_t;
+
+extern core_dev_t dev;
 #endif 

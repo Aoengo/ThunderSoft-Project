@@ -1,7 +1,8 @@
 TARGET		:= ThunderSoft_Project
+OBJS		:= ./src/core_thread.o ./src/core_timer.o ./src/core_main.o ./src/core_semaphore.o 
 ifneq ($(KERNELRELEASE),)
 	obj-m:= $(TARGET).o
-	$(TARGET)-objs += ./src/core_thread.o ./src/core_timer.o ./src/core_main.o 
+	$(TARGET)-objs += $(OBJS)
 else
 	KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 	PWD := $(shell pwd)

@@ -3,66 +3,54 @@
 
 #define CLONE_KERNEL    (CLONE_FS | CLONE_FILES | CLONE_SIGHAND)
 
+
 struct task_struct *task1_handle = NULL;
 struct task_struct *task2_handle = NULL;
 
-int kernel_count1(void *arg){
-    static int n = 1;
-    // while(1){
-    //     if(kthread_should_stop())
-    //     {
-    //         break;
-    //     }
-    //     printk("kthread1 running\n");
-    //     ssleep(3);
-    // }
-    
-    while(1){
-        if(kthread_should_stop())
-        {
-            break;
-        }
-        printk("kthread1 running!!!\n");
-        // ssleep(3);
-        while(timer_flag1);
 
-        timer_flag1 = 1;
-        printk("num1:%d\n",n++);
-        if(n > 100){
-            n = 1;
+int kernel_count1(void *arg){
+    dev.num1 = 1;
+    while(!kthread_should_stop()){
+        if(dev.thread_state){
+            down(&dev.timer_sema);
+            printk("Thread1,num1:%d\n",dev.num1++);
+            // printk("kthread1 running!!!\n");
+            if(dev.num1 > 100){
+                dev.num1 = 1;
+            }
+            up(&dev.thread_sema);
+        }else{
+            printk("Waiting Thread1 Exit\n");
+            ssleep(1);
         }
+        
     }
     return 0;
 }
 int kernel_count2(void *arg){
-    static int n = 1;
-    // while(1){
-    //     if(kthread_should_stop())
-    //     {
-    //         break;
-    //     }
-    //     printk("kthread2 running\n");
-    //     ssleep(3);
+    int times = 0;
+    dev.num2 = 1;
+    while(!kthread_should_stop()){
+        if(dev.thread_state){
+            down(&dev.thread_sema);
+            if(!(times % 2)){
+                printk("Thread2,num2:%d\n",dev.num2++);
+            }
+            if(dev.num2 > 100){
+                dev.num2 = 1;
+            }
+            //
+            if(times > 99){
+                times = 0;
+            }else{
+                times ++;
+            }
+            // printk("kthread2 running!!!\n");
 
-
-    // }
-    
-    while(1){
-        if(kthread_should_stop())
-        {
-            break;
+        }else{
+            printk("Waiting Thread2 Exit\n");
+            ssleep(1);
         }
-        printk("kthread2 running!!!\n");
-        // ssleep(3);
-
-        while(timer_flag2);
-        timer_flag2 = 1;
-        
-        printk("num2:%d\n",n++);
-        if(n > 100){
-            n = 1;
-        }
-    
     }
     return 0;
 }

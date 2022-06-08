@@ -778,8 +778,10 @@ deps_/home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/c
   arch/x86/include/asm/delay.h \
   include/asm-generic/delay.h \
   include/linux/kthread.h \
+  include/linux/semaphore.h \
   /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_thread.h \
   /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_timer.h \
+  /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_semaphore.h \
 
 /home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_main.o: $(deps_/home/gabriel/Desktop/ThunderSoft-Project/core-device/thread_device/./src/core_main.o)
 
