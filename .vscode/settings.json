@@ -4,6 +4,7 @@
         "core_timer.h": "c",
         "config.h": "c",
         "core_semaphore.h": "c",
-        "core_thread.h": "c"
+        "core_thread.h": "c",
+        "core_char.h": "c"
     }
 }

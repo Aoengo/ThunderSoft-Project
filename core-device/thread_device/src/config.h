@@ -10,15 +10,28 @@
 #include <linux/kthread.h>
 #include <linux/time.h>
 #include <linux/semaphore.h>
+#include <linux/fs.h>
+#include <linux/cdev.h>
+#include <linux/device.h>
 
 
 
+#define BUF_SIZE        256
 
 typedef struct {
-    struct semaphore thread_sema;
-    struct semaphore timer_sema;
+    //character device
+    struct cdev cdev;
+    uint8_t demo_buf[BUF_SIZE];
+
+    //semaphore
+    struct semaphore timer_sema1;
+    struct semaphore timer_sema2;
+
+    //count numbers
     int num1;
     int num2;
+
+    //thread work state
     int thread_state;
 }core_dev_t;
 

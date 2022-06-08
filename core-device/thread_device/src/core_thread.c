@@ -12,13 +12,12 @@ int kernel_count1(void *arg){
     dev.num1 = 1;
     while(!kthread_should_stop()){
         if(dev.thread_state){
-            down(&dev.timer_sema);
+            down(&dev.timer_sema1);
             printk("Thread1,num1:%d\n",dev.num1++);
-            // printk("kthread1 running!!!\n");
             if(dev.num1 > 100){
                 dev.num1 = 1;
             }
-            up(&dev.thread_sema);
+            // up(&dev.thread_sema);
         }else{
             printk("Waiting Thread1 Exit\n");
             ssleep(1);
@@ -32,7 +31,7 @@ int kernel_count2(void *arg){
     dev.num2 = 1;
     while(!kthread_should_stop()){
         if(dev.thread_state){
-            down(&dev.thread_sema);
+            down(&dev.timer_sema2);
             if(!(times % 2)){
                 printk("Thread2,num2:%d\n",dev.num2++);
             }
@@ -45,8 +44,6 @@ int kernel_count2(void *arg){
             }else{
                 times ++;
             }
-            // printk("kthread2 running!!!\n");
-
         }else{
             printk("Waiting Thread2 Exit\n");
             ssleep(1);

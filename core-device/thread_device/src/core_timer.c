@@ -1,13 +1,13 @@
 #include "core_timer.h"
 
-volatile unsigned short timer_flag1 = 1;
-volatile unsigned short timer_flag2 = 1;
+
 
 static struct timer_list timer;
 
 void timer_callback(struct timer_list *t){
     // printk("Timer running");
-    up(&dev.timer_sema);
+    up(&dev.timer_sema1);
+    up(&dev.timer_sema2);
     mod_timer(&timer,jiffies + msecs_to_jiffies(1000));
 }
 

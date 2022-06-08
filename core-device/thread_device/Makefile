@@ -1,5 +1,5 @@
 TARGET		:= ThunderSoft_Project
-OBJS		:= ./src/core_thread.o ./src/core_timer.o ./src/core_main.o ./src/core_semaphore.o 
+OBJS		:= ./src/core_thread.o ./src/core_timer.o ./src/core_main.o ./src/core_semaphore.o ./src/core_char.o 
 ifneq ($(KERNELRELEASE),)
 	obj-m:= $(TARGET).o
 	$(TARGET)-objs += $(OBJS)
