@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Desktop/ThunderSoft-Project/driver_app/Module.symvers := sed 's/\.ko$$/\.o/' /home/gabriel/Desktop/ThunderSoft-Project/driver_app/modules.order | scripts/mod/modpost -m -a  -o /home/gabriel/Desktop/ThunderSoft-Project/driver_app/Module.symvers -e -i Module.symvers   -T -
