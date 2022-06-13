@@ -15,6 +15,13 @@
 #define COMMAND_G '7'
 #define COMMAND_H '8'
 
+#define COMMAND_I 'a'
+#define COMMAND_J 's'
+#define COMMAND_K 'd'
+#define COMMAND_L 'f'
+
+
+
 static long demo_ioctl(struct file *filp,unsigned int cmd,unsigned long arg){
     // printk(KERN_ERR "DEMO: Line %d,function %s() has been invoked!\n",__LINE__,__func__);
     switch(cmd){
@@ -44,11 +51,26 @@ static long demo_ioctl(struct file *filp,unsigned int cmd,unsigned long arg){
         case COMMAND_H:
             digitalSet(&dev.work_state,((dev.work_state & 0x0f) | SECOND_STOP));
             break;
+
+
+        case COMMAND_I:
+            digitalSet(&dev.work_state,(FIRST_BEGIN | SECOND_BEGIN));
+            break;
+        case COMMAND_J:
+            digitalSet(&dev.work_state,(FIRST_CONTINUE | SECOND_CONTINUE));
+            break;
+        case COMMAND_K:
+            digitalSet(&dev.work_state,(FIRST_SUSPEND | SECOND_SUSPEND));
+            break;
+        case COMMAND_L:
+            digitalSet(&dev.work_state,(FIRST_STOP | SECOND_STOP));
+            break;
+        
         default:
-            printk("DEMO: Line %d,ioctl error(invalid command)!\n",__LINE__);
+            printk("Ioctl Error...");
             return -EINVAL;
     }
-    printk("Press Value:%x\n",dev.work_state);
+    printk("Ioctl Command:%c\n",cmd);
     return 0;
 }
 

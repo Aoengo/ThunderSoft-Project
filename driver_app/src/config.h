@@ -22,7 +22,6 @@
 
 
 enum work_state_e{
-
     FIRST_BEGIN = 0x01,
     FIRST_CONTINUE = 0x02,
     FIRST_SUSPEND = 0x04,

@@ -1,7 +1,5 @@
 #include "core_timer.h"
 
-
-
 static struct timer_list timer;
 
 void timer_callback(struct timer_list *t){
@@ -10,12 +8,6 @@ void timer_callback(struct timer_list *t){
 }
 
 int count_timer_init(void){
-    //old kernel version
-    // init_timer(&timer);
-    // timer.function = (void *)timer_callback;
-    // timer.expires = jiffies + 1000;
-    // timer.data = 0;
-    // add_timer(&timer);
     timer_setup(&timer,timer_callback,0);
     add_timer(&timer);
     printk("Timer Init...\n");

@@ -25,7 +25,6 @@ void sema_control(){
         case FIRST_STOP:{
             dev.num1 = 1;
             break;
-            //waiting code
         }
     }
     switch (dev.work_state &0xf0){
@@ -44,7 +43,6 @@ void sema_control(){
         case SECOND_STOP:{
             dev.num2 = 1;
             break;
-            //wating code
         }
     }
 }
@@ -61,7 +59,6 @@ int kernel_count1(void *arg){
             }
         }else{
             printk("Waiting Thread1 Exit\n");
-            // ssleep(1);
         }
     }
     return 0;
@@ -78,7 +75,6 @@ int kernel_count2(void *arg){
             if(dev.num2 > 100){
                 dev.num2 = 1;
             }
-            //
             if(times > 99){
                 times = 0;
             }else{
@@ -86,7 +82,6 @@ int kernel_count2(void *arg){
             }
         }else{
             printk("Waiting Thread2 Exit\n");
-            // ssleep(1);
         }
     }
     return 0;
@@ -101,7 +96,6 @@ int control_thread(void *arg){
             up(&dev.timer_sema1);
             up(&dev.timer_sema2);
             printk("Waiting Control Thread Exit\n");
-            // ssleep(1);
         }
     }
     return 0;
