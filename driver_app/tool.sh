@@ -1,10 +1,5 @@
 #!/bin/sh
 
-
-
-
-
-
 server_function(){
     sudo make clean                                                                                 
     sudo make 
@@ -47,5 +42,4 @@ then
 else 
     echo "Error Command:$1"
 fi
-
 
