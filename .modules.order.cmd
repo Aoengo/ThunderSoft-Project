@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Desktop/ThunderSoft-Project/modules.order := {   echo /home/gabriel/Desktop/ThunderSoft-Project/ThunderSoft_Project.ko; :; } | awk '!x[$$0]++' - > /home/gabriel/Desktop/ThunderSoft-Project/modules.order

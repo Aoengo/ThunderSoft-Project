@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Desktop/ThunderSoft-Project/ThunderSoft_Project.ko := ld -r  -m elf_x86_64  --build-id=sha1  -T scripts/module.lds -o /home/gabriel/Desktop/ThunderSoft-Project/ThunderSoft_Project.ko /home/gabriel/Desktop/ThunderSoft-Project/ThunderSoft_Project.o /home/gabriel/Desktop/ThunderSoft-Project/ThunderSoft_Project.mod.o;  true
